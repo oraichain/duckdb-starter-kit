@@ -2,7 +2,7 @@ const Layout = require('./layout');
 
 <Layout>
   <form action="/" method="get">
-    <input name="search" placeholder="Search title, description" />
+    <input name="search" placeholder="Search title, description" value={search} />
   </form>
   <br />
   {items.map(({ id, title, description, images, user }) => (

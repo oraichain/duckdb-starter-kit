@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
       return res.status(400).send(err.message);
     }
     res.render('list', {
+      search,
       items
     });
   });
