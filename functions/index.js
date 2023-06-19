@@ -15,7 +15,7 @@ const express = require('express');
 const engine = require('express-engine-jsx');
 const app = express();
 
-const db = new Database(':memory:');
+const db = new Database('data');
 
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'jsx');
@@ -40,6 +40,6 @@ app.get('/', (req, res) => {
   });
 });
 
-db.run(`CREATE TABLE data as select * from 'data.json'`);
+// db.run(`CREATE TABLE data as select * from 'data.json'`);
 
 exports.app = onRequest(app);

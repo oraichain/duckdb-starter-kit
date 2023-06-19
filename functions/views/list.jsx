@@ -1,7 +1,7 @@
 const Layout = require('./layout');
 
 <Layout>
-  <form action="/" method="get">
+  <form action="" method="get">
     <input name="search" placeholder="Search title, description" value={search} />
   </form>
   <br />
