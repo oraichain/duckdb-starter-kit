@@ -1,9 +1,19 @@
+/**
+ * Import function triggers from their respective submodules:
+ *
+ * const {onCall} = require("firebase-functions/v2/https");
+ * const {onDocumentWritten} = require("firebase-functions/v2/firestore");
+ *
+ * See a full list of supported triggers at https://firebase.google.com/docs/functions
+ */
+
+const { onRequest } = require('firebase-functions/v2/https');
+
 const { Database } = require('duckdb');
 const path = require('path');
 const express = require('express');
 const engine = require('express-engine-jsx');
 const app = express();
-const port = process.env.PORT || 3000;
 
 const db = new Database(':memory:');
 
@@ -30,10 +40,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  db.run(`CREATE TABLE data as select * from 'data.json'`, (err) => {
-    if (!err) {
-      console.log(`Example app listening on port ${port}`);
-    }
-  });
-});
+db.run(`CREATE TABLE data as select * from 'data.json'`);
+
+exports.app = onRequest(app);
