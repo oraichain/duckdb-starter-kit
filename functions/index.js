@@ -41,5 +41,6 @@ app.get('/', (req, res) => {
 });
 
 // db.run(`CREATE TABLE data as select * from 'data.json'`);
+db.exec("SET memory_limit='100MB'");
 
 exports.app = onRequest(app);
